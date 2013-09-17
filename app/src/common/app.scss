@@ -1,0 +1,17 @@
+@import "config";      // configuration variables for inuit, called overrides in similar projects
+@import "colors";      // basic color palette
+@import "typography";  // sizes, scales, webfonts
+@import "ui/icons";    // not typography per se (despite of the fact that they use fonts internally)
+
+// Vendor imports
+
+
+// Custom components
+@import "ui/buttons";
+
+
+
+
+body{
+  font-family: 'open sans', sans-serif;
+}

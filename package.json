@@ -1,8 +1,8 @@
 {
-  "author": "Rafal Pastuszak <rafal.pastuszak@algomi.com>",
-  "name": "connectivity-ui",
+  "author": "Rafal Pastuszak <rafal@paprikka.pl>",
+  "name": "angular-skeletor",
   "description": "AngularJS + Grunt",
-  "version": "0.1.1",
+  "version": "0.0.1",
   "engine": "node 0.10.11",
   "private": true,
   "dependencies": {},

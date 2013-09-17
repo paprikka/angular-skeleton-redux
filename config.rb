@@ -2,9 +2,10 @@
 
 # Set this to the root of your project when deployed:
 require 'sass-css-importer'
+
 images_dir                    = 'app/assets/img'
 http_images_path              = '../img'
-sass_dir                      = 'app/styles'
+sass_dir                      = 'app/src/common'
 css_dir                       = 'public/css'
 sass_options                  = {:sourcemap => true}
 enable_sourcemaps             = true
