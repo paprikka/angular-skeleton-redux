@@ -1,0 +1,7 @@
+h1.alpha HN Index
+p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+
+ul.news
+  li(ng-repeat="newsItem in news").news__item
+    a(ng-href="{{newsItem.url}}").news__title
+      {{ newsItem.title }}

@@ -3,12 +3,12 @@
 # Set this to the root of your project when deployed:
 require 'sass-css-importer'
 
-images_dir                    = 'app/assets/img'
-http_images_path              = '../img'
-sass_dir                      = 'app/src/common'
-css_dir                       = 'public/css'
-sass_options                  = {:sourcemap => true}
-enable_sourcemaps             = true
+images_dir        = 'assets/img'
+http_images_path  = '../img'
+sass_dir          = 'styles'
+css_dir           = 'public/css'
+sass_options      = { :sourcemap => true }
+enable_sourcemaps = true
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed

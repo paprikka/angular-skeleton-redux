@@ -1,5 +1,5 @@
 module.exports = (grunt)->
-  imports = grunt.file.readJSON 'app/imports.json'
+  imports = grunt.file.readJSON 'imports.json'
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
 
@@ -7,7 +7,7 @@ module.exports = (grunt)->
     coffee:
       compile:
         files:
-          'public/js/app.js' : ['app/**/*.coffee']
+          'public/js/app.js' : ['src/**/*.coffee']
         options:
           sourceMap: yes
           join: yes
@@ -19,7 +19,7 @@ module.exports = (grunt)->
           bare: yes
         expand: yes
         flatten: no
-        cwd: 'app/'
+        cwd: 'src'
         src: ['**/*.coffee']
         dest: 'test/js/'
         ext: '.js'
@@ -75,25 +75,25 @@ module.exports = (grunt)->
         livereload: yes
 
       assets:  
-        files: 'app/assets/**/*.*'
+        files: 'assets/**/*.*'
         tasks: ['copy:assets']
 
       scripts:  
-        files: 'app/src/**/*.coffee'
+        files: 'src/**/*.coffee'
         tasks: ['buildScripts']
 
       vendorScripts:
-        files: 'vendor/**/*.js'
+        files: imports.scripts
         tasks: ['concat:vendorScripts']
 
       templates:
-        files: 'app/src/**/*.jade'
+        files: 'src/**/*.jade'
         tasks: ['buildTemplates']
 
-      styles:
-        files:    ['app/src/**/*.scss']
-        tasks:    ['buildStyles']
-        options: livereload: off
+      # styles:
+      #   files:    ['styles/**/*.scss']
+      #   tasks:    ['buildStyles']
+      #   options: livereload: off
 
       css:
         files: ['public/css/*.css']
@@ -104,10 +104,10 @@ module.exports = (grunt)->
         options:
           client:   no
           wrap:     no
-          basePath: 'app/src'
+          basePath: 'src'
           pretty:   yes
         files:
-          'public/': ['app/src/**/*.jade']
+          'public/': ['src/**/*.jade']
 
     html2js:
       options:
@@ -145,7 +145,7 @@ module.exports = (grunt)->
     copy:
       assets:
         files:[
-          src:['**'], dest:'public/', cwd:'app/assets/', expand: yes
+          src:['**'], dest:'public/', cwd:'assets/', expand: yes
         ]
 
     clean:
@@ -154,7 +154,7 @@ module.exports = (grunt)->
       templates:
         src: ['public/partials/**/*.*', 'public/index.html']
       scripts:
-        src: ['public/js/']
+        src: ['public/js/app.js', 'public/js/vendor.js']
       testScripts:
         src: ['test/js/', 'test/coverage', 'test/js-unit']
       styles:
@@ -172,7 +172,15 @@ module.exports = (grunt)->
   grunt.loadNpmTasks 'grunt-jade'
   grunt.loadNpmTasks 'grunt-html2js'
 
-  grunt.registerTask 'buildScripts', ['clean:scripts', 'coffee:compile', 'concat:vendorScripts', 'html2js:main', 'livereload', 'coffee:compileForTests', 'coffee:compileTests']
+  grunt.registerTask 'buildScripts', [
+    'clean:scripts'
+    'coffee:compile'
+    'concat:vendorScripts'
+    'html2js:main'
+    'livereload'
+    'coffee:compileForTests'
+    'coffee:compileTests'
+  ]
 
   grunt.registerTask 'buildTemplates', ['clean:templates', 'jade', 'html2js:main', 'livereload']
 

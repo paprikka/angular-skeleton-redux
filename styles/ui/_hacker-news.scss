@@ -1,0 +1,21 @@
+.news{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+}
+
+
+
+.news__item{
+  margin-bottom: 10px;
+}
+
+.news__title{
+  text-decoration: none;
+  color: $gray;
+  background-color: transparentize($gray-lightest, .3);
+  padding: 20px;
+  display: block;
+
+}
